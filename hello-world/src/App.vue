@@ -1,44 +1,51 @@
 <template>
   <div>
-    <label>
-      <!-- v-bind ile html attributelerine dinamik olarak değer verebiliriz, bu değerler ya data ya computed'dan gelmeli -->
-      <input v-bind:placeholder="inputHolder" v-on:change="changeInput($event)" v-if="see">
-      <input v-bind:maxlength="maxValue" v-else>
-      <!-- v-on ile html içerisindeki eventleri yakalarız , metotları da çalıştırabiliyoruz -->
-      <button v-on:click="buttonClick" v-if="tryIt()">Tıkla</button>
-      <input placeholder="input 1" v-show="see">
-      <!-- v-show DOM'un her zaman üzerindedir , v-if v-else 'de ise her eklenen element silinir ve tekrar eklenir -->
-    </label>
+    <div v-if="tryOne === 1"> <!-- computed değeri bir değişken gibi davranır -->
+      this is 1
+    </div>
+    <div v-else-if="tryOne === 2">
+      this is 2
+    </div>
+    <div v-else-if="tryOne === 3">
+      this is 3
+    </div>
+    <div v-else>
+      this is 4
+    </div>
+    <!-- v-if component ve templatelerde kullanılabilir fakat v-show template desteklemez -->
+    <!-- v-if ile v-for beraber kullanılmaz, beraber kullanıldığında v-for dışarı yazılır -->
+    
+    <div v-if="tryRandom">this is bigger
+      <!-- eğer birbiri kullanılacak blokların içerisinde aynı elemanlardan kullanılırsa key gerekli -->
+      <input placeholder="1" key="1">
+    </div>
+    <div v-else>this is smaller
+      <input placeholder="2" key="2">
+    </div>
   </div>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
-      inputHolder: 'try it again',
-      maxValue: 10,
-      see: true
+      value: false
     }
   },
-  methods: {
-    changeInput($event) {
-      console.log($event.target.value);
+  methods: {},
+  computed: {
+    tryOne() {
+      return 2;
     },
-    buttonClick() {
-      console.log("clicked");
-    },
-    tryIt() {
-      if (this.see === true) {
-        return false;
-      } else {
-        return true;
-      }
+    tryRandom() {
+      const a = Math.random() > 0.5;
+      console.log(a);
+      return a;
     }
   }
 }
 </script>
 
 <style>
+
 </style>
