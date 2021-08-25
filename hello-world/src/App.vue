@@ -1,27 +1,7 @@
 <template>
   <div>
-    <div v-if="tryOne === 1"> <!-- computed değeri bir değişken gibi davranır -->
-      this is 1
-    </div>
-    <div v-else-if="tryOne === 2">
-      this is 2
-    </div>
-    <div v-else-if="tryOne === 3">
-      this is 3
-    </div>
-    <div v-else>
-      this is 4
-    </div>
-    <!-- v-if component ve templatelerde kullanılabilir fakat v-show template desteklemez -->
-    <!-- v-if ile v-for beraber kullanılmaz, beraber kullanıldığında v-for dışarı yazılır -->
-    
-    <div v-if="tryRandom">this is bigger
-      <!-- eğer birbiri kullanılacak blokların içerisinde aynı elemanlardan kullanılırsa key gerekli -->
-      <input placeholder="1" key="1">
-    </div>
-    <div v-else>this is smaller
-      <input placeholder="2" key="2">
-    </div>
+    <p v-for="i in 4" v-bind:key="i">{{ i }}</p>
+    <p v-for="(person,index) in persons" v-bind:key="index">name: {{ person.name }} age: {{ person.age }}</p>
   </div>
 </template>
 
@@ -29,20 +9,14 @@
 export default {
   data() {
     return {
-      value: false
+      persons: [
+        {name: 'Melih', age: 22},
+        {name: 'Zeynep', age: 10},
+        {name: 'Hüsnü', age: 7}
+      ]
     }
   },
-  methods: {},
-  computed: {
-    tryOne() {
-      return 2;
-    },
-    tryRandom() {
-      const a = Math.random() > 0.5;
-      console.log(a);
-      return a;
-    }
-  }
+  methods: {}
 }
 </script>
 
