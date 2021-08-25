@@ -1,23 +1,16 @@
 <template>
   <div>
-    <!-- v-once ile ilk render sabit kalır , değişken değişse de render sabit kalır -->
-    <button v-once v-on:click="changeValue">{{ value }}</button>
+    <p>{{ vue }}</p>
+    <p v-html="vue"></p>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
-      value: true
-    }
+    return {vue: '<a href="https://www.vue.org">vue web</a>'}
   },
-  methods: {
-    changeValue() {
-      this.value = !this.value;
-      console.log(this.value);
-    }
-  }
+  methods: {}
 }
 </script>
 
