@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <!-- string interpolation'ı keser -->
-    <p v-pre>{{ value }}</p> <!-- çıktı: {{ value }} -->
+  <!-- v-cloak derleme bitene kadar elementi görünmez hale getirir -->
+  <div v-cloak>
+
   </div>
 </template>
 
