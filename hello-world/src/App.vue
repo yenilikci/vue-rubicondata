@@ -1,14 +1,16 @@
 <template>
   <div>
-    <p>{{ vue }}</p>
-    <p v-html="vue"></p>
+    <!-- string interpolation'ı keser -->
+    <p v-pre>{{ value }}</p> <!-- çıktı: {{ value }} -->
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {vue: '<a href="https://www.vue.org">vue web</a>'}
+    return {
+      value: 'vue'
+    }
   },
   methods: {}
 }
