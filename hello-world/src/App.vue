@@ -1,7 +1,10 @@
 <template>
-  <!-- v-cloak derleme bitene kadar elementi görünmez hale getirir -->
-  <div v-cloak>
-
+  <div>
+    <p>{{ number + 1 }}</p>
+    <p>{{ number * 2 }}</p>
+    <p> {{ number === 4 ? 'four' : 'not four' }}</p>
+    <p>{{ msg.length }}</p>
+    <p>{{ msg.split('').reverse().join('') }}</p>
   </div>
 </template>
 
@@ -9,7 +12,8 @@
 export default {
   data() {
     return {
-      value: 'vue'
+      number: 12,
+      msg: "this is message"
     }
   },
   methods: {}
