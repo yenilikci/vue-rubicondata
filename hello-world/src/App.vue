@@ -1,7 +1,12 @@
 <template>
   <div>
-    {{ newArray }}
-    <button v-on:click="changeArray"></button>
+    <ul>
+      <li v-for="(item,index) in items" :key="index">Product Name: {{ item.type }} Stock Quantity: {{
+          item.number
+        }}
+      </li>
+      <button @click="tryArray()">Add</button>
+    </ul>
   </div>
 </template>
 
@@ -9,23 +14,32 @@
 export default {
   data() {
     return {
-      A: ['a', 'b', 'c', 'd', 'e'],
-      B: [2, 1, 3, 6, 5, 4],
-      newArray: []
+      items: [
+        {type: 'pen', number: 33},
+        {type: 'ball', number: 344},
+        {type: 'rocket', number: 563},
+        {type: 'guitar', number: 64},
+        {type: 'table', number: 12},
+      ]
     }
   },
   methods: {
-    changeArray() {
-      // this.newArray = this.A.map(item => item === 'c' ? 'newC' : item);
-      // this.newArray = this.A.filter(item => item === 'c');
-      // this.newArray = this.B.filter(item => item % 2 === 0);
-      // this.newArray = this.A.reverse();
-      this.newArray = this.B.sort(function () {
-        // return a - b;
-        return 0.5 - Math.random();
-      });
+    tryArray() {
+      //mutation fonk (dizi değerini değiştirir)
+      //this.items.push({type: 'pencil', number: 888})
+      //this.items.unshift({type: 'pencil', number: 888})
+      //const a = this.items.pop()
+      //const a = this.items.shift()
+      //const a = this.items.splice(1, 2) //start,deleteCount
+      //const a = this.items.splice(1, 2, {type: 'pencil', number: 888}); //3.param=items eklenir!
+      //diğerleri
+      //const a = this.items.concat({type: 'pencil', number: 888});
+      //const a = [...this.items, {type: 'pencil', number: 888}]; //spread op. -> sağda yazılan kısım override olur
+      //console.log(a)
+      //const a = this.items[2] = {type: 'pencil', number: 888};
     }
   }
+
 }
 </script>
 
