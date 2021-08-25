@@ -10,6 +10,24 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data() {
+    return {
+      value: ''
+    }
+  },
+  methods: {
+    fonk() {
+      return this.value + 1;
+    },
+    newFonk() {
+      this.fonk
+    }
+  },
+  beforeCreate() {
+    console.log("======================");
+    console.log();
+    this.value;
   }
 }
 </script>
