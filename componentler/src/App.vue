@@ -1,5 +1,5 @@
 <template>
-  <post :content="posts"/>
+  <post v-for="(item,index) in posts" :key="index" :item="item" :value="value"/>
 </template>
 
 <script>
@@ -14,7 +14,8 @@ export default {
         {number: 2, content: 'two'},
         {number: 3, content: 'three'},
         {number: 4, content: 'four'},
-      ]
+      ],
+      value: '<h1>Value</h1>'
     }
   },
   components: {
