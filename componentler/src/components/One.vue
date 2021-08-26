@@ -1,10 +1,22 @@
 <template>
-  <div class="container">this is one</div>
+  <div class="container">{{ mutateTitle }} <br> {{ title }}</div>
+  <button @click="tryOne"></button>
 </template>
 
 <script>
 export default {
-  name: "One"
+  name: "One",
+  props: ['titleBig', 'title'],
+  data() {
+    return {
+      mutateTitle: this.titleBig
+    }
+  },
+  methods: {
+    tryOne() {
+      this.mutateTitle = 'new Title'
+    }
+  }
 }
 </script>
 

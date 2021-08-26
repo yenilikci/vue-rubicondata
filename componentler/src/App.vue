@@ -1,7 +1,6 @@
 <template>
   <div>
-    <button v-for="tab in tabs" :key="tab" @click="currentTab = tab">{{ tab }}</button>
-    <component :is="currentTab"></component>
+    <first title-big="this is title" :title="titleValue"/>
   </div>
 </template>
 
@@ -14,8 +13,7 @@ export default {
   },
   data() {
     return {
-      currentTab: 'first',
-      tabs: ["first", "second", "third"]
+      titleValue: 'title value'
     }
   }
 }
