@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model.lazy="inputValue" @keyup="sendData">
+    <button @click="addToCard">click me</button>
   </div>
 </template>
 
@@ -16,9 +16,8 @@ export default {
     }
   },
   methods: {
-    sendData() {
-      //emit iki parametre alır 1 eventin string olarak adı , 2 gönderilecek parametre
-      this.$emit('sendToData', this.inputValue)
+    addToCard() {
+      this.$emit('updateValue', this.product)
     }
   }
 }

@@ -1,8 +1,7 @@
 <template>
   <div>
-    <!-- emit edilen sendToData 'dan gelen veri $event ile sendTo datasına atanır -->
-    <ProductPage @sendToData="sendTo = $event"/>
-    <span>{{ sendTo }}</span>
+    <ProductPage product="a" @updateValue="updateMainComponent($event)"/>
+    {{ cardValue.length }}
   </div>
 </template>
 
@@ -15,10 +14,14 @@ export default {
   },
   data() {
     return {
-      sendTo: '',
+      cardValue: [1, 2, 'a', 4]
     }
   },
-  methods: {}
+  methods: {
+    updateMainComponent(e) {
+      this.cardValue.push(e);
+    }
+  }
 }
 </script>
 
