@@ -1,38 +1,31 @@
 <template>
-  <div>
-    <ComponentA>
-      <!-- name ile eşleştirme yapmak için v-slot: veya # kullanabiliriz -->
-      <template v-slot:title>
-        <h2>this is title</h2>
-      </template>
-
-      <template v-slot:[slot2]>
-        <h2>this is try</h2>
-      </template>
-
-      <template #content="{person}">
-        <h2>this is content</h2>
-        {{ person.name }}
-      </template>
-
-    </ComponentA>
-
+  <div id="demo">
+    <button v-for="tab in tabs" :key="tab" @click="currentTab=tab">{{ tab }}</button>
+    <!-- keep alive component geçisinde component verisi silinmesin diye yani aktif tab orada kalır -->
+    <keep-alive>
+      <component :is="currentTab"></component>
+    </keep-alive>
   </div>
 </template>
 
 <script>
-import ComponentA from "./components/ComponentA";
+import CompA from "./components/CompA";
+import CompB from "./components/CompB";
 
 export default {
   components: {
-    ComponentA
+    CompA,
+    CompB
   },
   data() {
     return {
-      slot2: 'try'
+      currentTab: 'CompA',
+      tabs: ['CompA', 'CompB']
     }
   }
 }
 </script>
 
-<style></style>
+<style>
+
+</style>
