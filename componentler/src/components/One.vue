@@ -1,12 +1,24 @@
 <template>
-  <div class="container">{{ mutateTitle }} <br> {{ title }}</div>
+  <div class="container">{{ mutateTitle }}</div>
   <button @click="tryOne"></button>
 </template>
 
 <script>
 export default {
   name: "One",
-  props: ['titleBig', 'title'],
+  props: {
+    titleBig: {
+      type: String, Number,
+      required: true,
+      //default: 'default value'
+      default: () => {
+        return "default value"
+      },
+      validator: (value) => {
+        return ["this is title", "index", "header"].indexOf(value) !== -1;
+      }
+    }
+  },
   data() {
     return {
       mutateTitle: this.titleBig

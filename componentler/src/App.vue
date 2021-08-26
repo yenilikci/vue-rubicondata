@@ -1,6 +1,6 @@
 <template>
   <div>
-    <first title-big="this is title" :title="titleValue"/>
+    <first :title-big="titleValue"/>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      titleValue: 'title value'
+      titleValue: 'this is title'
     }
   }
 }
