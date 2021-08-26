@@ -6,15 +6,11 @@
 </template>
 
 <script>
-import One from "./components/One";
-import Two from "./components/Two";
-import Three from "./components/Three";
+import globalComponents from "./components/globalComponents";
 
 export default {
   components: {
-    "first": One,
-    "second": Two,
-    "third": Three
+    ...globalComponents
   },
   data() {
     return {

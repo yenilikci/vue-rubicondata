@@ -1,5 +1,5 @@
 <template>
-  <div>this is one</div>
+  <div class="container">this is one</div>
 </template>
 
 <script>
