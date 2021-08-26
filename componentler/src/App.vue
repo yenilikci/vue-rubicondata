@@ -1,29 +1,25 @@
 <template>
-  <post v-for="(item,index) in posts" :key="index" :item="item" :value="value"/>
+  <div>
+    <!-- emit edilen sendToData 'dan gelen veri $event ile sendTo datasına atanır -->
+    <ProductPage @sendToData="sendTo = $event"/>
+    <span>{{ sendTo }}</span>
+  </div>
 </template>
 
 <script>
-import Post from "./components/Post";
+import ProductPage from "./components/ProductPage";
 
 export default {
-  name: 'App',
+  components: {
+    ProductPage
+  },
   data() {
     return {
-      posts: [
-        {number: 1, content: 'one'},
-        {number: 2, content: 'two'},
-        {number: 3, content: 'three'},
-        {number: 4, content: 'four'},
-      ],
-      value: '<h1>Value</h1>'
+      sendTo: '',
     }
   },
-  components: {
-    Post
-  }
+  methods: {}
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
