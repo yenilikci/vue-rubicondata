@@ -1,25 +1,24 @@
 <template>
   <div>
-    <product-page :myCallBackFunc="otherFunc" :message="val"/>
-    <span>{{ val }}</span>
+    <Big/>
+    <Small/>
+    <p>adsaslp</p>
   </div>
 </template>
 
 <script>
-import ProductPage from "./components/ProductPage";
+import Big from "./components/Big";
+import Small from "./components/Small";
 
 export default {
-  components: {ProductPage},
-  data() {
-    return {
-      val: ''
-    }
+  components: {
+    Big,
+    Small
   },
-  methods: {
-    otherFunc(message) {
-      this.val = message
-    }
-  }
+  data() {
+    return {}
+  },
+  methods: {}
 }
 </script>
 
