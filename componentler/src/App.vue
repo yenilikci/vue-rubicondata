@@ -1,21 +1,25 @@
 <template>
   <div>
-    <Try v-html="slotValue">
-      <!-- this is for slot -->
-    </Try>
+    <button v-for="tab in tabs" :key="tab" @click="currentTab = tab">{{ tab }}</button>
+    <component :is="currentTab"></component>
   </div>
 </template>
 
 <script>
-import Try from "./components/Try";
+import One from "./components/One";
+import Two from "./components/Two";
+import Three from "./components/Three";
 
 export default {
   components: {
-    Try
+    "first": One,
+    "second": Two,
+    "third": Three
   },
   data() {
     return {
-      slotValue: '<h3>this is slot with html</h3>'
+      currentTab: 'first',
+      tabs: ["first", "second", "third"]
     }
   }
 }
