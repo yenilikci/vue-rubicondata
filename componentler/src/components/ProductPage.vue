@@ -1,28 +1,28 @@
 <template>
   <div>
-    <button @click="addToCard">click me</button>
+    <label>
+      <input v-model.lazy="message" @keyup="keyFunc">
+    </label>
   </div>
 </template>
 
 <script>
 export default {
-  name: "ProductPage",
   props: {
-    product: String
+    message: String,
+    myCallBackFunc: Function
   },
   data() {
-    return {
-      inputValue: ''
-    }
+    return {}
   },
   methods: {
-    addToCard() {
-      this.$emit('updateValue', this.product)
+    keyFunc() {
+      this.myCallBackFunc(this.message);
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

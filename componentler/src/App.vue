@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ProductPage product="a" @updateValue="updateMainComponent($event)"/>
-    {{ cardValue.length }}
+    <product-page :myCallBackFunc="otherFunc" :message="val"/>
+    <span>{{ val }}</span>
   </div>
 </template>
 
@@ -9,20 +9,20 @@
 import ProductPage from "./components/ProductPage";
 
 export default {
-  components: {
-    ProductPage
-  },
+  components: {ProductPage},
   data() {
     return {
-      cardValue: [1, 2, 'a', 4]
+      val: ''
     }
   },
   methods: {
-    updateMainComponent(e) {
-      this.cardValue.push(e);
+    otherFunc(message) {
+      this.val = message
     }
   }
 }
 </script>
 
-<style></style>
+<style>
+
+</style>
