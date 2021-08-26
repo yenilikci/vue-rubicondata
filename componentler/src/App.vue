@@ -1,24 +1,23 @@
 <template>
   <div>
-    <Big/>
-    <Small/>
-    <p>adsaslp</p>
+    <Try v-html="slotValue">
+      <!-- this is for slot -->
+    </Try>
   </div>
 </template>
 
 <script>
-import Big from "./components/Big";
-import Small from "./components/Small";
+import Try from "./components/Try";
 
 export default {
   components: {
-    Big,
-    Small
+    Try
   },
   data() {
-    return {}
-  },
-  methods: {}
+    return {
+      slotValue: '<h3>this is slot with html</h3>'
+    }
+  }
 }
 </script>
 
