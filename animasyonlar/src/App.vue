@@ -1,46 +1,54 @@
 <template>
   <div>
-    <button @click="show = !show">Toggle</button>
+    <button @click="clicked()">Toggle</button>
     <!-- appear , appear-class ... -->
     <!-- :duration="{ enter: 2000, leave: 1000 } -->
-    <transition name="bounce">
-      <p v-if="show">
-        Hello, Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit
-        reprehenderit iusto at illum beatae. Voluptatum magnam deserunt, minima,
-        amet labore laborum voluptates, natus nam blanditiis quae id ea a
-        excepturi.
-      </p>
+    <!-- @leave="leave()" @before-enter="beforeEnter()" -->
+    <transition name="fade" mode="out-in">
+      <component :is="view"></component>
     </transition>
   </div>
 </template>
 
 <script>
+  import HelloWorldA from "./components/HelloWorldA.vue";
+  import HelloWorldB from "./components/HelloWorldB.vue";
   export default {
     data() {
       return {
         show: true,
+        view: "HelloWorldA",
       };
+    },
+    components: {
+      HelloWorldA,
+      HelloWorldB,
+    },
+    methods: {
+      leave(el, done) {
+        done();
+      },
+      beforeEnter() {
+        document;
+      },
+      clicked() {
+        if (this.view === "HelloWorldA") {
+          this.view = "HelloWorldB";
+        } else {
+          this.view = "HelloWorldA";
+        }
+      },
     },
   };
 </script>
 
 <style>
-  .bounce-enter-active {
-    animation: bounce-in 0.5s;
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.9s ease;
   }
-  .bounce-leave-active {
-    animation: bounce-in 0.5s reverse;
-  }
-
-  @keyframes bounce-in {
-    0% {
-      transform: scale(0);
-    }
-    50% {
-      transform: scale(1.5);
-    }
-    100% {
-      transform: scale(1);
-    }
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0;
   }
 </style>
