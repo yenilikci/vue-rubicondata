@@ -4,13 +4,21 @@
     {{ 'hello' | reverseValue }} <br>
     {{ 'hello' | reverseValue | capitalize }} <br>
     {{ 'hi' | newCapitalize }}
+
+    <div>
+      {{ 20000 | currency }} <br>
+      {{ someDate | moment("dddd,MMMM Do YYYY") }} <br>
+      {{ someDate | moment("from", "now", true) }}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {}
+    return {
+      someDate: '12.12.12'
+    }
   },
   filters: {
     capitalize(value) {
