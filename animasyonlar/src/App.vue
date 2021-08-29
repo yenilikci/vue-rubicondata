@@ -1,54 +1,56 @@
 <template>
   <div>
-    <button @click="clicked()">Toggle</button>
-    <!-- appear , appear-class ... -->
-    <!-- :duration="{ enter: 2000, leave: 1000 } -->
-    <!-- @leave="leave()" @before-enter="beforeEnter()" -->
-    <transition name="fade" mode="out-in">
-      <component :is="view"></component>
-    </transition>
+    <button @click="shuffle">Shuffle</button>
+    <button @click="add">Add</button>
+    <button @click="remove">Remove</button>
+    <transition-group name="list" tag="p">
+      <span v-for="(item, index) in items" :key="index" class="list-item">{{
+        item
+      }}</span>
+    </transition-group>
   </div>
 </template>
 
 <script>
-  import HelloWorldA from "./components/HelloWorldA.vue";
-  import HelloWorldB from "./components/HelloWorldB.vue";
   export default {
     data() {
       return {
-        show: true,
-        view: "HelloWorldA",
+        items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        nextNumber: 10,
       };
     },
-    components: {
-      HelloWorldA,
-      HelloWorldB,
-    },
     methods: {
-      leave(el, done) {
-        done();
+      randomIndex() {
+        return Math.floor(Math.random() * this.items.length);
       },
-      beforeEnter() {
-        document;
+      add() {
+        this.items.splice(this.randomIndex(), 0, this.nextNumber++);
       },
-      clicked() {
-        if (this.view === "HelloWorldA") {
-          this.view = "HelloWorldB";
-        } else {
-          this.view = "HelloWorldA";
-        }
+      remove() {
+        this.items.splice(this.randomIndex(), 1);
+      },
+      shuffle() {
+        this.items.sort(() => Math.random() - 0.5);
       },
     },
   };
 </script>
 
 <style>
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.9s ease;
+  .list-item {
+    display: inline-block;
+    margin-right: 10px;
   }
-  .fade-enter,
-  .fade-leave-active {
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 1s;
+  }
+  .list-enter,
+  .list-leave-to {
     opacity: 0;
+    transform: translateY(30);
+  }
+  .list-move {
+    transition: transform 1s;
   }
 </style>
